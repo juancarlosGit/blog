@@ -330,3 +330,19 @@ Simula la eliminación de archivos, ¿tienes dudas de que archivos eliminará?, 
 Archivos que se hayan modificado o editados git clean no interviene aquí.
 
 git clean -df hubiera borrado la carpeta “css - copia”
+
+---------------------------------
+A veces hacemos un commit, pero resulta que no queríamos mandarlo porque faltaba algo más. Utilizamos git commit --amend, amend en inglés es remendar y lo que hará es que los cambios que hicimos nos los agregará al commit anterior.
+
+-----------
+git reflog
+git reset --hard 0e853be: volver a una version
+------------
+greep archivos y log para commits
+$ git grep -n color : busca la palabra con la linea
+
+git grep -c color: cuantas veces la utilizado y donde
+
+$ git grep -c "<p>" : entre comillas html
+
+

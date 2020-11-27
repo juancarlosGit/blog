@@ -1,0 +1,246 @@
+https://platzi.com/cursos/storytelling/
+https://platzi.com/cursos/curso-de-thick-data/
+https://platzi.com/cursos/canvas/
+---------------------------------------------------------------------------------------------------------------------
+$ git init
+Inicia un repositorio o base de datos que almacenará todos los cambios realizados a X archivo.
+
+$ git add archivo.txt
+Añade el archivo al repositorio y ahora éste sabe que existe.
+
+$ git add .
+Se guardan todos los archivos que hayan cambiado en la carpeta donde se hizo init.
+
+$ git commit -m "Version 1"
+Se guardan los cambios realizados en el repositorio.
+
+$git commit -am "Comentario"
+
+$ git status
+Conocer el estado de modificaciones.
+
+$ git log archivo.txt
+Historial de modificaciones.
+
+$ git push
+Para enviar el repositorio a un servidor.
+
+history
+Ver los últimos comandos que ejecutamos y un número especial con el que podemos repetir su ejecución.
+
+! + número: Ejecutar algún comando con el número que nos muestra el comando history (por ejemplo, !72).
+---------------------------------------------------------------------------------------------------------------------
+
+Recuerda que podemos descubrir todos los argumentos de un comando con el argumento --help (por ejemplo, cat --help).
+
+---------------------------------------------------------------------------------------------------------------------
+
+git rm: lo usamos para borrar un archivo que hayamos añadido, para eliminarlo por completo de nuestra rama usamos git rm --cached.
+
+
+git config: muestra configuraciones de git también podemos usar –list para mostrar la configuración por defecto de nuestro git y si añadimos --show-origin inhales nos muestra las configuraciones guardadas y su ubicación.
+
+git config --global user.name: cambia de manera global el nombre del usuario, seguidamente ponemos entre comillas nuestro nombre.
+
+git config --global user.email: cambia de manera global el email del usuario, seguidamente ponemos entre comillas nuestro nombre.
+
+git show [fichero]: muestra los cambios sufridos por en el archivo.
+
+git log [fichero]: muestra los commits guardados en el archivo.
+
+git diff [id del commit a comparar 1] [id del commit a comparar 2] → 
+Nos compara y muestra los cambios sufridos entre los dos commits. 
+Los id de los commit se pueden encontrar ejecutando git log.
+
+--------------------------------------------------------------------------------------------------------------
+El comando git checkout + ID del commit nos permite viajar en el tiempo.
+Podemos volver a cualquier versión anterior de un archivo específico o incluso del proyecto entero.
+Esta también es la forma de crear ramas y movernos entre ellas.
+
+También hay una forma de hacerlo un poco más “ruda”:
+usando el comando git reset. En este caso, no solo “volvemos en el tiempo”,
+sino que borramos los cambios que hicimos después de este commit.
+
+Hay dos formas de usar git reset:
+con el argumento --hard, borrando toda la información que tengamos 
+en el área de staging (y perdiendo todo para siempre). O, un poco más seguro, 
+con el argumento --soft, que mantiene allí los archivos del área de staging 
+para que podamos aplicar nuestros últimos cambios pero desde un commit anterior.
+
+----------------------------------------------------------------------------------------------------------------
+
+Hay dos formas de usar git reset: con el argumento --hard,
+borrando toda la información que tengamos en el área de staging (y perdiendo todo para siempre).
+O, un poco más seguro, con el argumento --soft, que mantiene allí los archivos del área de staging 
+para que podamos aplicar nuestros últimos cambios pero desde un commit anterior.
+
+git reset --soft: Borramos todo el historial y los registros de Git pero guardamos los cambios que
+tengamos en Staging, así podemos aplicar las últimas actualizaciones a un nuevo commit.
+git reset --hard: Borra todo. Todo todito, absolutamente todo. Toda la información de los commits y 
+del área de staging se borra del historial.
+¡Pero todavía falta algo!
+
+git reset HEAD: Este es el comando para sacar archivos del área de Staging. No para borrarlos ni nada de eso, 
+solo para que los últimos cambios de estos archivos no se envíen al último commit, 
+a menos que cambiemos de opinión y los incluyamos de nuevo en staging con git add, por supuesto.
+
+git checkout master <file>
+
+----------------------------------------
+git branch <nombre de la rama>
+git checkout <nombre de la rama>: para cambiarnos a la rama
+
+
+-----------------------------------------
+Algunos comandos que pueden ayudar cuando colaboren con proyectos muy grandes de github:
+
+git log --oneline - Te muestra el id commit y el título del commit.
+git log --decorate- Te muestra donde se encuentra el head point en el log.
+git log --stat - Explica el número de líneas que se cambiaron brevemente.
+git log -p- Explica el número de líneas que se cambiaron y te muestra que se cambió en el contenido.
+git shortlog - Indica que commits ha realizado un usuario, mostrando el usuario y el titulo de sus commits.
+git log --graph --oneline --decorate y
+git log --pretty=format:"%cn hizo un commit %h el dia %cd" - Muestra mensajes personalizados de los commits.
+git log -3 - Limitamos el número de commits.
+git log --after=“2018-1-2” ,
+git log --after=“today” y
+git log --after=“2018-1-2” --before=“today” - Commits para localizar por fechas.
+git log --author=“Name Author” - Commits realizados por autor que cumplan exactamente con el nombre.
+git log --grep=“INVIE” - Busca los commits que cumplan tal cual está escrito entre las comillas.
+git log --grep=“INVIE” –i- Busca los commits que cumplan sin importar mayúsculas o minúsculas.
+git log – index.html- Busca los commits en un archivo en específico.
+git log -S “Por contenido”- Buscar los commits con el contenido dentro del archivo.
+git log > log.txt - guardar los logs en un archivo txt
+
+
+--------------------------------------------------------------------------------
+Subir proyecto a GitHub
+
+$git remote add origin <url>
+
+$git remote
+$git remote -v
+$git pull origin main --allow-unrelated-histories
+
+$git push origin master:main
+
+
+-----------------------------------------------------------------
+pasos para crear llaves ssh (secure shell)
+
+1 corroborar email de la consola sea igual al de github con el comando git config -l
+
+escribir comando de crear una llave ssh estando en el home (~)
+ssh-keygen -t rsa -b 4096 -C “youremail@example.com”
+
+Agregar llave al entorno, que el sistema operativo sepa que la llave existe.
+4 Revisar si el servidor de llaves esta prendido con el comando eval $(ssh-agent - s), saldra un Agent pid con un # y dira que el servidor esta corriendo
+
+5 agregar llave a ese servidor
+$ ssh-add ~/.ssh/id_rsa
+
+Conectar con Github Perfil>Settings>SSH and gpg keys, despues seleccionar el repositorio del proyecto y la opciòn de ssh en code or download copiar esa URL
+
+con el comando git remote -v = ver URLS del repositorio
+
+8.git remote set-url origin +URL SSH para cambiar las urls
+
+9 verificar con git remote -v el cambio y tambien realizando cambios al proyect.pero antes de hacer un commit de esos cambios primero traer ultima version del repositorio
+*con git pull origin (nombre de repositorio remoto) master
+
+git commit -am, status y diff guardar y ver cambios, y commit, pull y push para enviar a GitHub
+Y listo ya no pedira mas contraseña para el push y estaran contectados git y github de forma mucho mas segura
+-------------------------------------------------
+
+Para mostrar las modificaciones de manera simplificada y con el gráfico de los árboles del proyecto usar:
+git log --all --graph --decorate --oneline
+
+Para crear alias de comandos, cuando son muy largos por ejemplo:
+
+alias nombredelalias="comando de referencia"
+
+Para llamar al comando ahora únicamente lo podemos hacer con el nombre.
+
+
+Para crear un tag:
+git tag -a nombredeltag -m "Un mensaje" númerodelcommit
+
+númerodelcommit =  git log --all --graph --decorate --oneline
+
+git tag —> nos mostrará la lista de todos los tags
+
+git push origin --tags -> mandar tags a github
+
+
+git show-ref --tags —> Para ver a que commit está conectado cada tag
+
+git tag -d nombredeltag —>para borrar tags
+
+git push origin : refs/tags/nombredeltag —> para borrar el tag en github
+
+branch y github
+
+git show-branch --all : muestra detalle de las ramas
+gitk : interfaz
+git pull origin main: traer lo del repositorio
+// para subir la rama es necesario colocarse en ella
+git checkout cabecera
+git push origin cabecera
+
+git checkout master
+git branch header
+git branch footer
+git branch
+git push origin footer
+git push origin header
+
+------------------------------------------------------
+Forks o Bifurcaciones
+Es una característica única de GitHub en la que se crea una copia exacta del estado actual de un repositorio directamente en GitHub, 
+éste repositorio podrá servir como otro origen y se podrá clonar (como cualquier otro repositorio), en pocas palabras, 
+lo podremos utilizar como un git cualquiera
+.
+Un fork es como una bifurcación del repositorio completo, tiene una historia en común, pero de repente se bifurca y pueden 
+variar los cambios, ya que ambos proyectos podrán ser modificados en paralelo y para estar al día un colaborador tendrá que 
+estar actualizando su fork con la información del original.
+.
+Al hacer un fork de un poryecto en GitHub, te conviertes en dueñ@ del repositorio fork, puedes trabajar en éste con todos 
+los permisos, pero es un repositorio completamente diferente que el original, teniendo alguna historia en común.
+.
+Los forks son importantes porque es la manera en la que funciona el open source, ya que, una persona puede no ser 
+colaborador de un proyecto, pero puede contribuír al mismo, haciendo mejor software que pueda ser utilizado por cualquiera.
+.
+Al hacer un fork, GitHub sabe que se hizo el fork del proyecto, por lo que se le permite al colaborador hacer pull request desde su repositorio propio.
+
+Trabajando con más de 1 repositorio remoto
+Cuando trabajas en un proyecto que existe en diferentes repositorios remotos (normalmente a causa de un fork) es muy probable 
+que desees poder trabajar con ambos repositorios, para ésto puedes crear un remoto adicional desde consola.
+
+git remote add <nombre_del_remoto> <url_del_remoto> 
+git remote upstream https://github.com/freddier/hyperblog
+Al crear un remoto adicional podremos, hacer pull desde el nuevo origen (en caso de tener permisos podremos hacer fetch y push)
+
+git pull <remoto> <rama>
+git pull upstream master
+Éste pull nos traerá los cambios del remoto, por lo que se estará al día en el proyecto, el flujo de trabajo cambia,
+en adelante se estará trabajando haciendo pull desde el upstream y push al origin para pasar a hacer pull request.
+
+git pull upstream master
+git push origin master
+
+
+1. Clic en fork en GitHub
+2. Traerlo a mi compuradora (copiar el link) y ejecutar el siguiente comando: git clone <url>
+3. Se realizan los cambios
+4. Realizar git push (se hace al fork)
+5. En GitHub hacer pull request (commit intermedio)
+6. Agregar comentarios en GitHub
+
+Archivos Readme md
+https://pandao.github.io/editor.md/en.html
+
+ESC Shift ZZ
+
+-------------------
+$ git branch -D <nombre de rama>: borramos rama
+
